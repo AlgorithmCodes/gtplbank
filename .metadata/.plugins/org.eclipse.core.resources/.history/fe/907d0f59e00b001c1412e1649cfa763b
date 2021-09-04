@@ -1,0 +1,29 @@
+package com.gtpl.qa.pages;
+
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+
+import com.gtpl.qa.base.GTPLBase;
+
+public class LoginPage extends GTPLBase {
+	
+	//@FindBy()
+	
+	@FindBy(name="uid")
+	WebElement username;
+	
+	@FindBy(name="password")
+	WebElement password;
+	
+	@FindBy(name="btnLogin")
+	WebElement loginBtn;
+	
+	
+	
+	@FindBy(xpath="//h2[text()='Gtpl Bank']")
+	WebElement bankLogo;
+	
+	
+	
+
+}

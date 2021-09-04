@@ -1,0 +1,48 @@
+package com.gtpl.qa.testcases;
+
+import org.testng.Assert;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Test;
+
+import com.gtpl.qa.base.GTPLBase;
+import com.gtpl.qa.pages.HomePage;
+import com.gtpl.qa.pages.LoginPage;
+
+public class HomePageTest extends GTPLBase {
+	
+	HomePage homePage;
+	LoginPage loginPage;
+	
+	@BeforeMethod
+	public void setup() {
+		initialization();
+		loginPage=new LoginPage();
+		homePage=new HomePage();
+	}
+	
+	@Test(priority = 1)
+	public void validateTitle() {
+		loginPage.login(prop.getProperty("username"), prop.getProperty("password"));
+		String title=homePage.validateHomePageTitle();
+		Assert.assertEquals(title, "GTPL Bank Manager HomePage");
+		
+	}
+	
+	@Test(priority = 2)
+	public void validateBankLogo() {
+		boolean logoIsthere=homePage.validateBankLogo();
+		Assert.assertEquals(true, logoIsthere);
+	}
+	
+	@Test(priority = 3)
+	public void verifyHomePage() {
+	Assert.assertEquals(true, homePage.validateManagerHomePage());
+	}
+	
+	@AfterMethod
+	public void close() {
+		tearDown();
+	}
+
+}

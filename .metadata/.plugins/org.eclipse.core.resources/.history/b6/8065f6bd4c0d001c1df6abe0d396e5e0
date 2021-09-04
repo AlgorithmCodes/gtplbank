@@ -1,0 +1,53 @@
+package com.gtpl.qa.testcases;
+
+import org.testng.Assert;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Test;
+
+import com.gtpl.qa.base.GTPLBase;
+import com.gtpl.qa.pages.HomePage;
+import com.gtpl.qa.pages.LoginPage;
+import com.gtpl.qa.pages.NewCustomerPage;
+
+public class NewCustomerPageTest extends GTPLBase{
+	LoginPage loginPage;
+	HomePage homePage;
+	NewCustomerPage newCustomerPage;
+	
+	public NewCustomerPageTest() {
+		super();
+	}
+	
+	@BeforeMethod
+	public void setup() {
+		initialization();
+		loginPage=new LoginPage();
+		
+		homePage=loginPage.login(prop.getProperty("username"), prop.getProperty("password"));
+		newCustomerPage=homePage.createNewCustomer();
+	}
+	
+	@Test(priority = 1)
+	public void validateNewCustomerPageTitle() {
+	String newCustomerPageTitle=	newCustomerPage.validateNewCustomerPageTitle();
+	Assert.assertEquals("Guru99 Bank New Customer Entry Page", newCustomerPageTitle.trim());
+	}
+	
+	@Test(priority=2)
+	public void valiadateBankLogo() {
+		boolean bankLogo=newCustomerPage.validateNewCustomerPageBankLogo();
+		Assert.assertEquals(true, bankLogo);
+	}
+	
+	@Test(priority = 3)
+	public void validateNewCustomerPage() {
+	Assert.assertEquals(true, newCustomerPage.validateNewCustomerPage());
+	}
+	
+	@AfterMethod
+	public void close() {
+		tearDown();
+	}
+
+}

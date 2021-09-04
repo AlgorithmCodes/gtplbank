@@ -1,0 +1,15 @@
+package com.gtpl.qa.util;
+
+public class CustomerGender {
+	
+	
+	public static void getNewCustGender(String dob) {
+		
+		
+		
+		
+		
+		
+	}
+
+}

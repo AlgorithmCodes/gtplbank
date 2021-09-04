@@ -1,0 +1,55 @@
+package com.gtpl.qa.listeners;
+
+
+import com.aventstack.extentreports.markuputils.ExtentColor;
+import com.aventstack.extentreports.markuputils.MarkupHelper;
+import com.gtpl.qa.base.GTPLBase;
+import com.gtpl.qa.util.TestReport;
+
+public class MyTestListener implements ITestListener{
+	
+	
+	
+	@Override
+	public void onTestStart(ITestResult result) {
+		TestReport.getReport();
+		TestReport.extentTest=TestReport.extentReports.createTest(result.getName());
+		
+		
+	}
+
+	@Override
+	public void onTestSuccess(ITestResult result) {
+		//extentTest.pass("Test is passed");
+		TestReport.extentTest.pass(MarkupHelper.createLabel(result.getName()+" Test is passed", ExtentColor.GREEN));
+	}
+
+	@Override
+	public void onTestFailure(ITestResult result) {
+		
+		GTPLBase.getScreenCapture(result.getName());
+		TestReport.extentTest.addScreenCaptureFromPath("B:\\project\\GTPLBankAutomation_UI\\screenshots"+result.getName());
+		TestReport.extentTest.fail(MarkupHelper.createLabel(result.getName()+" Test is failed", ExtentColor.RED));
+	}
+
+	@Override
+	public void onTestSkipped(ITestResult result) {
+		
+		TestReport.extentTest.skip(MarkupHelper.createLabel(result.getName()+" Test is skipped", ExtentColor.YELLOW));
+	}
+
+	@Override
+	public void onTestFailedButWithinSuccessPercentage(ITestResult result) {
+	}
+
+	@Override
+	public void onStart(ITestContext context) {
+	}
+
+	@Override
+	public void onFinish(ITestContext context) {
+		
+		TestReport.extentReports.flush();
+	}
+
+}

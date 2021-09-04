@@ -1,0 +1,22 @@
+package com.gtpl.qa.util;
+
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+
+public class DateTimeCreator {
+	
+	public static void getDateAndTime() {
+		DateTimeFormatter dateTimeFormatter=DateTimeFormatter.ofPattern("yyyy.MM.dd_HH:mm:ss");
+		LocalDateTime date=LocalDateTime.now();
+		System.out.println(dateTimeFormatter.format(date));
+		
+		String dateAndTime=String.valueOf(date);
+		
+		System.out.println(dateAndTime);
+	}
+	
+	public static void main(String[] args) {
+		DateTimeCreator.getDateAndTime();
+	}
+
+}

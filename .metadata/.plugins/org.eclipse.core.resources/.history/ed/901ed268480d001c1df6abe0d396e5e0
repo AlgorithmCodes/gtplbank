@@ -1,0 +1,10 @@
+package com.gtpl.qa.util;
+
+public class CustDOB {
+	
+	
+	public static void getCustDoBDay() {
+		
+	}
+
+}

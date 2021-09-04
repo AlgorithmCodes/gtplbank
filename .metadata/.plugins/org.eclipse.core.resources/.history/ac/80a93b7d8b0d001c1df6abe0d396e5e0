@@ -1,0 +1,34 @@
+package com.gtpl.qa.util;
+
+import com.aventstack.extentreports.ExtentReports;
+import com.aventstack.extentreports.ExtentTest;
+import com.aventstack.extentreports.reporter.ExtentSparkReporter;
+
+public class TestReport {
+	 
+	public static ExtentSparkReporter extentSparkReporter;
+	public static ExtentReports extentReports;
+	public static ExtentTest extentTest;
+	
+	
+	public static ExtentReports getReport() {
+		
+		
+		
+		
+		if(extentReports==null) {
+			extentSparkReporter=new ExtentSparkReporter("smokeTestReport.html");
+			extentReports.attachReporter(extentSparkReporter);
+			extentReports=new ExtentReports();
+			extentReports.setSystemInfo("Reporter", "Krishna");
+			extentReports.setSystemInfo("Automation", "GTPL Bank");
+			extentReports.setSystemInfo("Role", "Lead");
+			
+			return extentReports;
+		}
+		else {
+			return extentReports;
+		}
+		
+	}
+}

@@ -1,0 +1,5 @@
+package com.gtpl.qa.pages;
+
+public class DeleteAccountPage {
+
+}

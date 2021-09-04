@@ -1,0 +1,77 @@
+package com.gtpl.qa.pages;
+
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+
+import com.gtpl.qa.base.GTPLBase;
+
+public class HomePage extends GTPLBase {
+	
+	@FindBy(xpath="//marquee[contains(text(),'Welcome To Manager')]")
+	WebElement managerPage;
+	
+	@FindBy(xpath="//li/a[text()='Manager']")
+	WebElement managerLink;
+	
+	@FindBy(xpath="//li/a[text()='New Customer']")
+	WebElement newCustomerLink;
+	
+	@FindBy(xpath="//li/a[text()='Edit Customer']")
+	WebElement editCustomerLink;
+	
+	@FindBy(xpath="//li/a[text()='Delete Customer']")
+	WebElement deleteCustomerLink;
+	
+	@FindBy(xpath="//li/a[text()='New Account']")
+	WebElement newAccountLink;
+	
+	@FindBy(xpath="//li/a[text()='Edit Account']")
+	WebElement editAccountLink;
+	
+	@FindBy(xpath="//li/a[text()='Delete Account']")
+	WebElement deleteAccountLink;
+	
+	@FindBy(xpath="//li/a[text()='Mini Statement']")
+	WebElement miniStatementLink;
+	
+	@FindBy(xpath="//li/a[text()='Customised Statement']")
+	WebElement customisedStatementLink;
+	
+	@FindBy(xpath="//li/a[text()='Log out']")
+	WebElement logoutLink;
+	
+	@FindBy(xpath="//h2[text()='Gtpl Bank']")
+	WebElement bankLogo;
+	
+	public String validateHomePageTitle() {
+		return driver.getTitle();
+	
+	}
+	
+	public boolean validateManagerHomePage() {
+		
+		return managerPage.isDisplayed();
+		
+	}
+	
+	public boolean validateBankLogo() {
+		return bankLogo.isDisplayed();
+		
+	}
+	
+	
+	public NewCustomerPage createNewCustomer() {
+		newCustomerLink.click();
+		return new  NewCustomerPage();
+	}
+	
+	public EditCustomerPage editExistingCustomer() {
+		editCustomerLink.click();
+		return new EditCustomerPage();
+	}
+	
+	
+	
+	
+
+}

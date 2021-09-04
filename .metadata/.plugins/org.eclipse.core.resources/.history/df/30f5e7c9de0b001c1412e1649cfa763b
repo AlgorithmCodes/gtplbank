@@ -1,0 +1,9 @@
+package com.gtpl.qa.util;
+
+public class TimeOuts {
+	
+	
+	public static int pageLoadoutTime=20;
+	public static int implicitWaitTime=20;
+
+}

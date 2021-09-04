@@ -1,0 +1,32 @@
+package com.gtpl.qa.testcases;
+
+import org.testng.annotations.BeforeMethod;
+
+import com.gtpl.qa.base.GTPLBase;
+import com.gtpl.qa.pages.HomePage;
+import com.gtpl.qa.pages.LoginPage;
+import com.gtpl.qa.pages.NewCustomerPage;
+
+public class NewCustomerPageTest extends GTPLBase{
+	LoginPage loginPage;
+	HomePage homePage;
+	NewCustomerPage newCustomerPage;
+	
+	public NewCustomerPageTest() {
+		super();
+	}
+	
+	@BeforeMethod
+	public void setup() {
+		initialization();
+		loginPage=new LoginPage();
+		
+		homePage=loginPage.login(prop.getProperty("username"), prop.getProperty("password"));
+		newCustomerPage=homePage.createNewCustomer();
+	}
+	
+	public void validateNewCustomerPageTitle() {
+		
+	}
+
+}

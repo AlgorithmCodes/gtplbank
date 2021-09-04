@@ -1,0 +1,10 @@
+package com.gtpl.qa.testcases;
+
+import com.gtpl.qa.base.GTPLBase;
+
+public class LoginPageTest extends GTPLBase{
+	
+	
+	
+
+}

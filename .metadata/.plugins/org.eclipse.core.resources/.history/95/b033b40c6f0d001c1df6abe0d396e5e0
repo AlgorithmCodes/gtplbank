@@ -1,0 +1,50 @@
+package com.gtpl.qa.listeners;
+
+import org.testng.ITestContext;
+import org.testng.ITestListener;
+import org.testng.ITestResult;
+
+import com.aventstack.extentreports.markuputils.Markup;
+import com.gtpl.qa.util.TestReport;
+
+public class CustomListener implements ITestListener{
+
+	@Override
+	public void onTestStart(ITestResult result) {
+		
+		getReport();
+		extentTest=extentReports.createTest(result.getName());
+		
+		
+	}
+
+	@Override
+	public void onTestSuccess(ITestResult result) {
+		extentTest.pass("Test is passed");
+	}
+
+	@Override
+	public void onTestFailure(ITestResult result) {
+		extentTest.pass("Test is failed");
+	}
+
+	@Override
+	public void onTestSkipped(ITestResult result) {
+		extentTest.pass("Test is skipped");
+	}
+
+	@Override
+	public void onTestFailedButWithinSuccessPercentage(ITestResult result) {
+	}
+
+	@Override
+	public void onStart(ITestContext context) {
+	}
+
+	@Override
+	public void onFinish(ITestContext context) {
+		
+		extentReports.flush();
+	}
+
+}
